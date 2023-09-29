@@ -13,6 +13,30 @@
 
 int	ft_printf(const char *format, ...)
 {
-	(void) format;
+	va_list	args;
+
+	va_start(args, format);
+	while (*format != '\0')
+	{
+		if (*format == '%')
+		{
+			format++;
+			if (*format == 'd')
+				printf("%d ", va_arg(args, int));
+			else
+				if (*format == 's')
+					printf("%s ", va_arg(args, char *));
+		}
+		format++;
+	}
+	va_end(args);
 	return (0);
 }
+/*
+int	main(int argc, char **argv)
+{
+	(void) argc;
+	ft_printf(argv[1], argv[2], argv[3]);
+	return (0);
+}
+*/
