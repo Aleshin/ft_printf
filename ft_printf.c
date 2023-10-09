@@ -14,7 +14,11 @@
 int	ft_printf(const char *format, ...)
 {
 	va_list	args;
+	char	*str;
+	int		counter;
+	int		c;
 
+	counter = 0;
 	va_start(args, format);
 	while (*format != '\0')
 	{
@@ -22,21 +26,50 @@ int	ft_printf(const char *format, ...)
 		{
 			format++;
 			if (*format == 'd')
-				printf("%d ", va_arg(args, int));
-			else
-				if (*format == 's')
-					printf("%s ", va_arg(args, char *));
+			{
+				sprintf(str, "%d", va_arg(args, int));
+				write(1, str, strlen(str));
+				counter = counter + strlen(str) - 1;
+			}
+			else if (*format == '%')
+			{
+				write(1, format, 1);
+			}
+			else if (*format == 'c')
+			{
+				c = va_arg(args, int);
+				write(1, &c, 1);
+			}
+			else if (*format == 's')
+			{
+				str = va_arg(args, char *);
+				if (str)
+				{
+				write(1, str, strlen(str));
+				counter = counter + strlen(str) - 1;
+				}
+			}
+			format++;
+			counter++;
 		}
+		else
+		{
+		write(1, format, 1);
 		format++;
+		counter++;
+		}
 	}
 	va_end(args);
-	return (0);
+	return (counter);
 }
 /*
 int	main(int argc, char **argv)
 {
 	(void) argc;
-	ft_printf(argv[1], argv[2], argv[3]);
+	ft_printf("%c", "x");
+//	printf(argv[1], 'w'); //argv[2]);
+	printf("\n");
+	ft_printf(argv[1], argv[2]);
 	return (0);
 }
 */

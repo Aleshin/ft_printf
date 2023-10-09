@@ -18,7 +18,8 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <stdarg.h>
+# include <string.h>
 
-int	ft_printf(const char *format, ...);
+//int	ft_printf(const char *format, ...);
 
 #endif
