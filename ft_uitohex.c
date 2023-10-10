@@ -40,8 +40,8 @@ char	*hexrecursive(char *s, unsigned long n, int cs)
 		s = hexrecursive(s, n / 16, cs);
 	if (cs == 'X')
 		*s++ = hex_base_upper[n % 16];
-		else
-			*s++ = hex_base[n % 16];
+	else
+		*s++ = hex_base[n % 16];
 	return (s);
 }
 
