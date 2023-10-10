@@ -21,5 +21,6 @@
 # include <string.h>
 
 //int	ft_printf(const char *format, ...);
+char	*ft_itoa(int n);
 
 #endif

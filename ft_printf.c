@@ -27,9 +27,10 @@ int	ft_printf(const char *format, ...)
 			format++;
 			if (*format == 'd')
 			{
-				sprintf(str, "%d", va_arg(args, int));
+				str = ft_itoa(va_arg(args, int));
 				write(1, str, strlen(str));
 				counter = counter + strlen(str) - 1;
+				free(str);
 			}
 			else if (*format == '%')
 			{
@@ -43,11 +44,16 @@ int	ft_printf(const char *format, ...)
 			else if (*format == 's')
 			{
 				str = va_arg(args, char *);
-				if (str)
+				if (str != NULL)
 				{
 				write(1, str, strlen(str));
 				counter = counter + strlen(str) - 1;
 				}
+				else
+					{
+						write(1, "(null)", 6);
+						counter = counter + 5;
+					}
 			}
 			format++;
 			counter++;
@@ -66,10 +72,12 @@ int	ft_printf(const char *format, ...)
 int	main(int argc, char **argv)
 {
 	(void) argc;
-	ft_printf("%c", "x");
+	(void) argv;
+//	ft_printf("%c", "x");
 //	printf(argv[1], 'w'); //argv[2]);
-	printf("\n");
-	ft_printf(argv[1], argv[2]);
+	printf("%s\n", NULL);
+	ft_printf("%s", NULL);
+//	ft_printf(argv[1], argv[2]);
 	return (0);
 }
 */
