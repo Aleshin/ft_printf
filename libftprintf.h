@@ -22,5 +22,7 @@
 
 //int	ft_printf(const char *format, ...);
 char	*ft_itoa(int n);
+char	*ft_uitoa(unsigned int n);
+char	*ft_uitohex(unsigned long n, int cs);
 
 #endif

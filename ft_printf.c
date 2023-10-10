@@ -41,6 +41,48 @@ int	ft_printf(const char *format, ...)
 				counter = counter + strlen(str) - 1;
 				free(str);
 			}
+	if (*format == 'u')
+			{
+				str = ft_uitoa(va_arg(args, unsigned int));
+				if (str == 0)
+					return (-1);
+				if (write(1, str, strlen(str)) == -1)
+				{
+					free(str);
+					return(-1);
+				}
+				counter = counter + strlen(str) - 1;
+				free(str);
+			}
+	if (*format == 'x' || *format == 'X')
+			{
+				str = ft_uitohex(va_arg(args, unsigned int), *format);
+				if (str == 0)
+					return (-1);
+				if (write(1, str, strlen(str)) == -1)
+				{
+					free(str);
+					return(-1);
+				}
+				counter = counter + strlen(str) - 1;
+				free(str);
+			}
+	if (*format == 'p')
+			{
+				if (write(1, "0x", 2) == -1)
+					return (-1);
+					counter = counter + 2;
+				str = ft_uitohex(va_arg(args, unsigned long), *format);
+				if (str == 0)
+					return (-1);
+				if (write(1, str, strlen(str)) == -1)
+				{
+					free(str);
+					return(-1);
+				}
+				counter = counter + strlen(str) - 1;
+				free(str);
+			}
 			else if (*format == '%')
 			{
 				if (write(1, format, 1) == -1)
