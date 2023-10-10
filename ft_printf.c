@@ -16,42 +16,55 @@ int	ft_printf(const char *format, ...)
 	va_list	args;
 	char	*str;
 	int		counter;
+	int		p_counter;
 	int		c;
 
 	counter = 0;
+	p_counter = 0;
 	va_start(args, format);
 	while (*format != '\0')
 	{
 		if (*format == '%')
 		{
 			format++;
-			if (*format == 'd')
+			p_counter++;
+			if (*format == 'd' || *format == 'i')
 			{
 				str = ft_itoa(va_arg(args, int));
-				write(1, str, strlen(str));
+				if (str == 0)
+					return (-1);
+				if (write(1, str, strlen(str)) == -1)
+				{
+					free(str);
+					return(-1);
+				}
 				counter = counter + strlen(str) - 1;
 				free(str);
 			}
 			else if (*format == '%')
 			{
-				write(1, format, 1);
+				if (write(1, format, 1) == -1)
+					return (-1);
 			}
 			else if (*format == 'c')
 			{
 				c = va_arg(args, int);
-				write(1, &c, 1);
+				if (write(1, &c, 1) == -1)
+					return(-1);
 			}
 			else if (*format == 's')
 			{
 				str = va_arg(args, char *);
 				if (str != NULL)
 				{
-				write(1, str, strlen(str));
+				if (write(1, str, strlen(str)) == -1)
+					return (-1);
 				counter = counter + strlen(str) - 1;
 				}
 				else
 					{
-						write(1, "(null)", 6);
+						if (write(1, "(null)", 6) == -1)
+							return (-1);
 						counter = counter + 5;
 					}
 			}
@@ -60,7 +73,8 @@ int	ft_printf(const char *format, ...)
 		}
 		else
 		{
-		write(1, format, 1);
+		if (write(1, format, 1) == -1)
+			return (-1);
 		format++;
 		counter++;
 		}
