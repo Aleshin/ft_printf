@@ -24,5 +24,9 @@
 char	*ft_itoa(int n);
 char	*ft_uitoa(unsigned int n);
 char	*ft_uitohex(unsigned long n, int cs);
+int		di_function(va_list args, int *counter);
+int		u_function(va_list args, int *counter);
+int		xp_function(va_list args, int cs, int *counter);
+int		s_function(va_list args, int *counter);
 
 #endif

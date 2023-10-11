@@ -49,6 +49,23 @@ char	*ft_uitoa(unsigned int n)
 	urecursive (s, ln);
 	return (s);
 }
+
+int	u_function(va_list args, int *counter)
+{
+	char	*str;
+
+	str = ft_uitoa(va_arg(args, unsigned int));
+	if (str == 0)
+		return (-1);
+	if (write(1, str, strlen(str)) == -1)
+	{
+		free(str);
+		return (-1);
+	}
+	*counter = *counter + strlen(str) - 1;
+	free(str);
+	return (0);
+}
 /*
 int	main(int argc, char **argv)
 {

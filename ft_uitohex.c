@@ -58,6 +58,49 @@ char	*ft_uitohex(unsigned long n, int cs)
 	return (s);
 }
 /*
+int	x_function(va_list args, int cs, int *counter)
+{
+	char	*str;
+
+	str = ft_uitohex(va_arg(args, unsigned int), cs);
+	if (str == 0)
+		return (-1);
+	if (write(1, str, strlen(str)) == -1)
+	{
+		free(str);
+		return (-1);
+	}
+	*counter = *counter + strlen(str) - 1;
+	free(str);
+	return (0);
+}
+*/
+
+int	xp_function(va_list args, int cs, int *counter)
+{
+	char	*str;
+
+	if (cs == 'p')
+	{
+		if (write(1, "0x", 2) == -1)
+			return (-1);
+		*counter = *counter + 2;
+		str = ft_uitohex(va_arg(args, unsigned long), cs);
+	}
+	else
+		str = ft_uitohex(va_arg(args, unsigned int), cs);
+	if (str == 0)
+		return (-1);
+	if (write(1, str, strlen(str)) == -1)
+	{
+		free(str);
+		return (-1);
+	}
+	*counter = *counter + strlen(str) - 1;
+	free(str);
+	return (0);
+}
+/*
 int	main(int argc, char **argv)
 {
 	(void) argc;

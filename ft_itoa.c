@@ -59,6 +59,23 @@ char	*ft_itoa(int n)
 	recursive (s, ln);
 	return (s);
 }
+
+int	di_function(va_list args, int *counter)
+{
+	char	*str;
+
+	str = ft_itoa(va_arg(args, int));
+	if (str == 0)
+		return (-1);
+	if (write(1, str, strlen(str)) == -1)
+	{
+		free(str);
+		return (-1);
+	}
+	*counter = *counter + strlen(str) - 1;
+	free(str);
+	return (0);
+}
 /*
 int	main(int argc, char **argv)
 {
