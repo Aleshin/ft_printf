@@ -6,7 +6,7 @@ LIB = ar rc
 
 NAME = libftprintf.a
 EXE = a.out
-HEADER = libftprintf.h
+HEADER = ft_printf.h
 
 SRCS =	ft_printf.c ft_itoa.c ft_uitoa.c ft_uitohex.c
 

@@ -9,7 +9,7 @@
 /*   Updated: 2023/08/14 18:34:19 by saleshin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 char	*hexstring(unsigned long n)
 {
@@ -57,24 +57,6 @@ char	*ft_uitohex(unsigned long n, int cs)
 	hexrecursive (s, ln, cs);
 	return (s);
 }
-/*
-int	x_function(va_list args, int cs, int *counter)
-{
-	char	*str;
-
-	str = ft_uitohex(va_arg(args, unsigned int), cs);
-	if (str == 0)
-		return (-1);
-	if (write(1, str, strlen(str)) == -1)
-	{
-		free(str);
-		return (-1);
-	}
-	*counter = *counter + strlen(str) - 1;
-	free(str);
-	return (0);
-}
-*/
 
 int	xp_function(va_list args, int cs, int *counter)
 {

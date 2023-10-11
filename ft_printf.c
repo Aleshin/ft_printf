@@ -9,7 +9,7 @@
 /*   Updated: 2023/09/28 15:36:41 by saleshin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	s_function(va_list args, int *counter)
 {

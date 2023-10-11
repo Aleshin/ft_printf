@@ -18,7 +18,15 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <stdarg.h>
+# include <string.h>
 
-int	ft_printf(const char *format, ...);
+int		ft_printf(const char *format, ...);
+char	*ft_itoa(int n);
+char	*ft_uitoa(unsigned int n);
+char	*ft_uitohex(unsigned long n, int cs);
+int		di_function(va_list args, int *counter);
+int		u_function(va_list args, int *counter);
+int		xp_function(va_list args, int cs, int *counter);
+int		s_function(va_list args, int *counter);
 
 #endif

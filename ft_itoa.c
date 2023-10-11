@@ -9,7 +9,7 @@
 /*   Updated: 2023/08/14 18:34:19 by saleshin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 char	*string(long n)
 {
