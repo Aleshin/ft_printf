@@ -18,9 +18,9 @@ int	s_function(va_list args, int *counter)
 	str = va_arg(args, char *);
 	if (str != NULL)
 	{
-		if (write(1, str, strlen(str)) == -1)
+		if (write(1, str, ft_strlen(str)) == -1)
 			return (-1);
-		*counter = *counter + strlen(str) - 1;
+		*counter = *counter + ft_strlen(str) - 1;
 	}
 	else
 	{

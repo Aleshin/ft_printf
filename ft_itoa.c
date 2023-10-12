@@ -67,12 +67,12 @@ int	di_function(va_list args, int *counter)
 	str = ft_itoa(va_arg(args, int));
 	if (str == 0)
 		return (-1);
-	if (write(1, str, strlen(str)) == -1)
+	if (write(1, str, ft_strlen(str)) == -1)
 	{
 		free(str);
 		return (-1);
 	}
-	*counter = *counter + strlen(str) - 1;
+	*counter = *counter + ft_strlen(str) - 1;
 	free(str);
 	return (0);
 }

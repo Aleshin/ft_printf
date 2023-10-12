@@ -11,67 +11,15 @@
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-char	*ustring(unsigned int n)
+size_t	ft_strlen(const char *str)
 {
-	int		i;
-	char	*s;
+	size_t	res;
 
-	i = 0;
-	while (n > 9)
+	res = 0;
+	while (*str != '\0')
 	{
-		n = n / 10;
-		i++;
+		str++;
+		res++;
 	}
-	s = malloc((i + 2) * sizeof(char));
-	if (s == 0)
-		return (0);
-	s[i + 1] = '\0';
-	return (s);
+	return (res);
 }
-
-char	*urecursive(char *s, unsigned int n)
-{
-	if (n >= 10)
-		s = urecursive(s, n / 10);
-	*s++ = '0' + (n % 10);
-	return (s);
-}
-
-char	*ft_uitoa(unsigned int n)
-{
-	char			*s;
-	unsigned int	ln;
-
-	ln = n;
-	s = ustring(ln);
-	if (s == 0)
-		return (0);
-	urecursive (s, ln);
-	return (s);
-}
-
-int	u_function(va_list args, int *counter)
-{
-	char	*str;
-
-	str = ft_uitoa(va_arg(args, unsigned int));
-	if (str == 0)
-		return (-1);
-	if (write(1, str, ft_strlen(str)) == -1)
-	{
-		free(str);
-		return (-1);
-	}
-	*counter = *counter + ft_strlen(str) - 1;
-	free(str);
-	return (0);
-}
-/*
-int	main(int argc, char **argv)
-{
-	(void) argc;
-	printf("%s\n", ft_itoa(-2147483647-1));
-	printf("%s\n", ft_itoa(atoi(argv[1])));
-	return (0);
-}
-*/

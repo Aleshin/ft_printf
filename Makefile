@@ -8,7 +8,7 @@ NAME = libftprintf.a
 EXE = a.out
 HEADER = ft_printf.h
 
-SRCS =	ft_printf.c ft_itoa.c ft_uitoa.c ft_uitohex.c
+SRCS =	ft_printf.c ft_itoa.c ft_uitoa.c ft_uitohex.c ft_strlen.c
 
 OBJS = $(SRCS:.c=.o)
 

@@ -13,13 +13,11 @@
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include <stddef.h>
 # include <stdlib.h>
-# include <stdio.h>
 # include <unistd.h>
 # include <stdarg.h>
-# include <string.h>
 
+size_t	ft_strlen(const char *str);
 int		ft_printf(const char *format, ...);
 char	*ft_itoa(int n);
 char	*ft_uitoa(unsigned int n);
